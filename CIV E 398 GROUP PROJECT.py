@@ -2,9 +2,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-
-#sethie poo is the best guy in the world
-
 class Beam:
     def __init__(self, length, E, I, num_elements=10):
         self.length = length
