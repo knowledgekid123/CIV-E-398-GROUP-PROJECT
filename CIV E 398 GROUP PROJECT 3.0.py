@@ -5,8 +5,6 @@ import time
 
 # ============ Beam FEM (Euler–Bernoulli) ============
 
-# seth
-
 class Beam:
     """
     Euler–Bernoulli 2D beam (vertical bending) with cubic Hermite elements.
