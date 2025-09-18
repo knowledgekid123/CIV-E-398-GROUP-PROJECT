@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 import time
+import tkinter as tk
 
 # ============ Beam FEM (Euler–Bernoulli) ============
 
@@ -574,7 +575,7 @@ class MultiSpanBeam(Beam):
         K = np.zeros((ndof, ndof))
         F = np.zeros(ndof)
 
-        # assemble stiffness
+        # Assemble stiffness
         for e in range(self.ne):
             x0, x1, Le = self._element_span(e)
             EI = self.EI[e]
@@ -584,7 +585,7 @@ class MultiSpanBeam(Beam):
                 for j in range(4):
                     K[dofs[i], dofs[j]] += ke[i, j]
 
-        # body loads (UDL and LVDL) to equivalent nodal loads
+        # Body loads (UDL and LVDL) to equivalent nodal loads
         for typ, *vals in self.loads:
             if typ == "udl":
                 x1, x2, w_N_m = vals
@@ -631,7 +632,7 @@ class MultiSpanBeam(Beam):
                     F[dofs[2]] += fe_v2
                     F[dofs[3]] -= fe_m2 # Note the sign change for moment at right node
         
-        # nodal point loads / moments (snap to nearest node)
+        # Nodal point loads / moments (snap to nearest node)
         for typ, *vals in self.loads:
             if typ == "point":
                 x, P_N = vals
